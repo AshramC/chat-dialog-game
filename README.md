@@ -1,4 +1,4 @@
-# WeChat Dialog
+# Chat Dialog Game
 
 微信风格的分阶段互动对话引擎。项目基于 Vite + TypeScript，运行时通过 URL 参数加载 `public/dialogues/` 下的 JSON 剧本。
 
