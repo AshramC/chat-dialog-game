@@ -1,0 +1,23 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="36" fill="#101721"/>
+  <rect x="72" y="72" width="1056" height="656" rx="28" fill="#1D2632" stroke="#334155" stroke-width="12"/>
+  <text x="110" y="150" fill="#F8FAFC" font-size="44" font-family="Arial, sans-serif" font-weight="700">设备间配电面板</text>
+  <text x="110" y="198" fill="#94A3B8" font-size="24" font-family="Arial, sans-serif">示例素材，用于演示 npc-image / system-image 节点</text>
+  <rect x="116" y="254" width="300" height="352" rx="20" fill="#243142" stroke="#3E526B" stroke-width="8"/>
+  <text x="158" y="322" fill="#E2E8F0" font-size="34" font-family="Arial, sans-serif" font-weight="700">A 区总闸</text>
+  <rect x="160" y="362" width="212" height="148" rx="18" fill="#0F172A" stroke="#64748B" stroke-width="6"/>
+  <circle cx="266" cy="436" r="50" fill="#F59E0B"/>
+  <text x="232" y="447" fill="#111827" font-size="34" font-family="Arial, sans-serif" font-weight="700">ON</text>
+  <rect x="450" y="254" width="300" height="352" rx="20" fill="#243142" stroke="#3E526B" stroke-width="8"/>
+  <text x="492" y="322" fill="#E2E8F0" font-size="34" font-family="Arial, sans-serif" font-weight="700">排风控制</text>
+  <rect x="494" y="362" width="212" height="148" rx="18" fill="#0F172A" stroke="#64748B" stroke-width="6"/>
+  <circle cx="600" cy="436" r="50" fill="#22C55E"/>
+  <text x="564" y="447" fill="#052E16" font-size="34" font-family="Arial, sans-serif" font-weight="700">RUN</text>
+  <rect x="784" y="254" width="300" height="352" rx="20" fill="#243142" stroke="#3E526B" stroke-width="8"/>
+  <text x="826" y="322" fill="#E2E8F0" font-size="34" font-family="Arial, sans-serif" font-weight="700">维护备注</text>
+  <text x="826" y="396" fill="#F8FAFC" font-size="26" font-family="Arial, sans-serif">1. 先断 A 区总闸</text>
+  <text x="826" y="446" fill="#CBD5E1" font-size="24" font-family="Arial, sans-serif">2. 等待指示灯熄灭</text>
+  <text x="826" y="496" fill="#CBD5E1" font-size="24" font-family="Arial, sans-serif">3. 再进入设备间检查</text>
+  <rect x="116" y="642" width="968" height="52" rx="14" fill="#0F172A" stroke="#334155" stroke-width="4"/>
+  <text x="148" y="676" fill="#F8FAFC" font-size="22" font-family="Arial, sans-serif">公开仓库建议：把所有示例素材都换成自制或可再分发资源</text>
+</svg>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>微信对话</title>
+</head>
+<body>
+
+<!-- Loading -->
+<div class="loading-screen" id="loadingScreen">
+  <div class="spinner"></div>
+</div>
+
+<div class="phone-frame">
+  <!-- Top Bar -->
+  <div class="topbar">
+    <button class="nav-btn topbar-left" type="button" aria-label="返回">
+      <div class="topbar-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.2" stroke-linecap="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </div>
+    </button>
+    <div class="topbar-center" id="topbarCenter">
+      <span class="contact-name" id="contactName">加载中...</span>
+      <span class="typing-hint">对方正在输入...</span>
+    </div>
+    <div class="topbar-right">
+      <button class="nav-btn" type="button" aria-label="更多操作">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 4v16"/>
+          <path d="M4 12h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Fullscreen Video Overlay -->
+  <div class="video-fullscreen" id="videoFullscreen">
+    <button class="fs-close" id="fsClose">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <div class="fs-content" id="fsContent"></div>
+  </div>
+
+  <!-- Chat Messages -->
+  <div class="chat-area" id="chatArea"></div>
+
+  <!-- Input Bar -->
+  <div class="input-bar">
+    <div class="reply-suggestions hidden" id="replySuggestions" aria-label="推荐回复"></div>
+    <div class="composer-shell">
+      <button class="icon-btn plus-btn" id="plusBtn" type="button" aria-label="添加内容">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 5v14"/>
+          <path d="M5 12h14"/>
+        </svg>
+      </button>
+      <div class="input-field-wrap">
+        <textarea class="input-field" id="inputField" rows="1" placeholder="写下你的回应..."></textarea>
+      </div>
+      <button class="send-btn" id="sendBtn" type="button">发送</button>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>本项目默认附带的是公开示例剧本，内容纯属虚构。</p>
+    <p>发布前请替换示例剧本、素材和许可证配置。</p>
+  </footer>
+</div>
+
+<!-- Hint Toast -->
+<div class="hint-toast" id="hintToast"></div>
+
+<script type="module" src="./src/main.ts"></script>
+</body>
+</html>

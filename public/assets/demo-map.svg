@@ -1,0 +1,23 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="36" fill="#EEF3F7"/>
+  <rect x="54" y="54" width="1092" height="692" rx="28" fill="#FFFFFF" stroke="#D8E2EA" stroke-width="12"/>
+  <text x="90" y="132" fill="#22404A" font-size="44" font-family="Arial, sans-serif" font-weight="700">夜巡平面图</text>
+  <text x="90" y="178" fill="#65808B" font-size="24" font-family="Arial, sans-serif">示例素材，可替换成你的场景图或公告图</text>
+  <rect x="108" y="228" width="984" height="78" rx="16" fill="#F2F7F5" stroke="#C7D9D2" stroke-width="6"/>
+  <text x="140" y="279" fill="#2C6150" font-size="28" font-family="Arial, sans-serif" font-weight="700">西侧走廊</text>
+  <rect x="108" y="340" width="260" height="250" rx="18" fill="#E3EDF7" stroke="#BFD0E1" stroke-width="6"/>
+  <text x="146" y="402" fill="#34506C" font-size="30" font-family="Arial, sans-serif" font-weight="700">值班室</text>
+  <text x="146" y="452" fill="#5A748E" font-size="22" font-family="Arial, sans-serif">应急灯、对讲机、登记表</text>
+  <rect x="470" y="340" width="260" height="250" rx="18" fill="#E8F4E9" stroke="#C4D9C7" stroke-width="6"/>
+  <text x="510" y="402" fill="#2E6140" font-size="30" font-family="Arial, sans-serif" font-weight="700">储物间</text>
+  <text x="510" y="452" fill="#5D7B67" font-size="22" font-family="Arial, sans-serif">备用钥匙、绝缘手套</text>
+  <rect x="832" y="340" width="260" height="250" rx="18" fill="#F8ECDD" stroke="#E4D2BA" stroke-width="6"/>
+  <text x="872" y="402" fill="#7B5630" font-size="30" font-family="Arial, sans-serif" font-weight="700">设备间</text>
+  <text x="872" y="452" fill="#98704A" font-size="22" font-family="Arial, sans-serif">电源箱、排风开关</text>
+  <path d="M368 465H470" stroke="#92A4B1" stroke-width="12" stroke-linecap="round"/>
+  <path d="M730 465H832" stroke="#92A4B1" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="420" cy="465" r="14" fill="#92A4B1"/>
+  <circle cx="780" cy="465" r="14" fill="#92A4B1"/>
+  <rect x="108" y="632" width="984" height="74" rx="16" fill="#20333C"/>
+  <text x="142" y="679" fill="#F6FBFF" font-size="24" font-family="Arial, sans-serif">推荐路线：值班室 → 储物间取钥匙 → 设备间断开总闸</text>
+</svg>

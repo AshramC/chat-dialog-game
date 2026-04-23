@@ -1,0 +1,427 @@
+{
+  "title": "夜巡值班示例",
+  "contact": {
+    "name": "值班班长",
+    "avatar": "assets/demo-contact.svg"
+  },
+  "playerAvatar": "assets/demo-player.svg",
+  "friendAdd": {
+    "enabled": true,
+    "time": "刚刚",
+    "greeting": "收到，我在线。",
+    "customText": "你已加入临时值班频道，以上是你的第一条消息。"
+  },
+  "defaultBadEndingModal": {
+    "title": "处理失败",
+    "body": "值班员在没有完成安全步骤的情况下进入了设备间，演示对话在这里结束。你可以重新开始，再试一次更稳妥的分支。",
+    "buttonText": "重新开始",
+    "redirectUrl": "?d=demo-night-shift"
+  },
+  "badSequence": [
+    {
+      "type": "npc",
+      "text": "等等，里面的声音突然变大了。"
+    },
+    {
+      "type": "npc",
+      "text": "我不能直接冲进去，不然可能会出事。"
+    }
+  ],
+  "stages": [
+    {
+      "id": "stage-1",
+      "duration": 90,
+      "onTimeout": "ending-timeout",
+      "intro": [
+        {
+          "type": "system-notice-card",
+          "title": "公开示例说明",
+          "description": "这个剧本用于演示引擎能力，内容是虚构的夜巡值班场景。",
+          "items": [
+            "回复任意内容开始",
+            "本示例会演示 single、open、choice、image 和 ending",
+            "你可以直接修改 JSON，替换成自己的故事"
+          ],
+          "footer": "建议把这个文件当成模板，而不是直接用于正式项目。",
+          "showBeforeStart": true
+        },
+        {
+          "type": "time",
+          "useCurrentTime": true
+        },
+        {
+          "type": "npc",
+          "text": "值班频道有人吗？设备间这边的灯一直在闪。"
+        }
+      ],
+      "nodes": [
+        {
+          "type": "single",
+          "id": "confirm-online",
+          "prompt": [
+            {
+              "type": "npc",
+              "text": "能看到我的消息就回我一句，我先别乱动。"
+            }
+          ],
+          "mode": "any",
+          "successResponse": [
+            {
+              "type": "npc",
+              "text": "收到，总算联系上了。"
+            },
+            {
+              "type": "npc",
+              "text": "我在西侧走廊，设备间门口能听到风机异响。"
+            },
+            {
+              "type": "npc",
+              "text": "我不想贸然开门，你先帮我判断一下流程。"
+            }
+          ]
+        },
+        {
+          "type": "open",
+          "duration": 40,
+          "defaultResponse": [
+            {
+              "type": "system",
+              "text": "这条消息没有命中示例关键词。你可以问位置、地图、装备或异响。"
+            }
+          ],
+          "timedEvents": [
+            {
+              "at": 25,
+              "choice": {
+                "type": "choice",
+                "prompt": [
+                  {
+                    "type": "npc",
+                    "text": "我想起来储物间里有一把备用钥匙。"
+                  },
+                  {
+                    "type": "npc",
+                    "text": "要不要我先去把钥匙和绝缘手套拿上？"
+                  }
+                ],
+                "options": [
+                  {
+                    "mode": "contains",
+                    "keywords": [
+                      "去",
+                      "拿",
+                      "带上",
+                      "先取",
+                      "钥匙",
+                      "手套"
+                    ],
+                    "response": [
+                      {
+                        "type": "npc",
+                        "text": "好，我先去储物间。"
+                      }
+                    ],
+                    "next": "stage-2",
+                    "recordOutcome": {
+                      "id": "took-safety-kit",
+                      "outcome": "pass"
+                    }
+                  },
+                  {
+                    "mode": "contains",
+                    "keywords": [
+                      "不用",
+                      "别",
+                      "算了",
+                      "先别"
+                    ],
+                    "response": [
+                      {
+                        "type": "npc",
+                        "text": "那我还在门口等你下一步指令。"
+                      }
+                    ],
+                    "next": "continue",
+                    "recordOutcome": {
+                      "id": "took-safety-kit",
+                      "outcome": "bad"
+                    }
+                  }
+                ],
+                "defaultResponse": [
+                  {
+                    "type": "system",
+                    "text": "这个 choice 节点要求文本命中任一选项关键词。"
+                  }
+                ]
+              }
+            }
+          ],
+          "groups": [
+            {
+              "id": "ask-location",
+              "mode": "contains",
+              "keywords": [
+                "在哪",
+                "位置",
+                "哪里",
+                "走廊"
+              ],
+              "responses": [
+                {
+                  "type": "npc",
+                  "text": "我在西侧走廊尽头，左边是值班室，右边再过去就是设备间。"
+                }
+              ]
+            },
+            {
+              "id": "ask-map",
+              "mode": "contains",
+              "keywords": [
+                "地图",
+                "平面图",
+                "路线",
+                "结构"
+              ],
+              "responses": [
+                {
+                  "type": "system-image",
+                  "src": "assets/demo-map.svg",
+                  "alt": "夜巡平面图"
+                }
+              ]
+            },
+            {
+              "id": "ask-tools",
+              "mode": "contains",
+              "keywords": [
+                "装备",
+                "工具",
+                "手套",
+                "钥匙"
+              ],
+              "responses": [
+                {
+                  "type": "npc",
+                  "text": "值班室里有对讲机，储物间里有绝缘手套和备用钥匙。"
+                }
+              ]
+            },
+            {
+              "id": "ask-noise",
+              "mode": "contains",
+              "keywords": [
+                "异响",
+                "声音",
+                "风机",
+                "设备"
+              ],
+              "responses": [
+                {
+                  "type": "npc",
+                  "text": "像是风机空转，频率忽快忽慢。门缝里还能看到控制面板在闪。"
+                },
+                {
+                  "type": "npc-image",
+                  "src": "assets/demo-panel.svg"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "onComplete": "stage-2"
+    },
+    {
+      "id": "stage-2",
+      "duration": 70,
+      "onTimeout": "ending-timeout",
+      "intro": [
+        {
+          "type": "time",
+          "useCurrentTime": true
+        },
+        {
+          "type": "npc",
+          "text": "我已经站到设备间门口了，现在该做最后确认。"
+        }
+      ],
+      "nodes": [
+        {
+          "type": "choice",
+          "prompt": [
+            {
+              "type": "npc",
+              "text": "你希望我先做哪一步？"
+            }
+          ],
+          "options": [
+            {
+              "mode": "contains",
+              "keywords": [
+                "断电",
+                "总闸",
+                "先断",
+                "切电"
+              ],
+              "response": [
+                {
+                  "type": "npc",
+                  "text": "明白，我先去配电面板。"
+                }
+              ],
+              "next": "continue",
+              "recordOutcome": {
+                "id": "picked-safe-plan",
+                "outcome": "pass"
+              }
+            },
+            {
+              "mode": "contains",
+              "keywords": [
+                "开门",
+                "进去",
+                "直接进",
+                "推门"
+              ],
+              "response": [
+                {
+                  "type": "npc",
+                  "text": "这样太冒险了，我先停一下。"
+                }
+              ],
+              "next": "bad-end-rush-in",
+              "recordOutcome": {
+                "id": "picked-safe-plan",
+                "outcome": "bad"
+              }
+            }
+          ],
+          "defaultResponse": [
+            {
+              "type": "system",
+              "text": "试试发送“先断电”或“直接开门”。"
+            }
+          ]
+        },
+        {
+          "type": "single",
+          "id": "final-instruction",
+          "prompt": [
+            {
+              "type": "npc",
+              "text": "配电面板上写着“A 区总闸”和“排风控制”。我要先动哪个？"
+            }
+          ],
+          "mode": "contains",
+          "keywords": [
+            "a区总闸",
+            "总闸",
+            "先断a",
+            "a区"
+          ],
+          "errorHint": "当前示例中，正确操作是先断开 A 区总闸。",
+          "successResponse": [
+            {
+              "type": "npc",
+              "text": "好，总闸已经拉下来了，指示灯在慢慢熄灭。"
+            },
+            {
+              "type": "npc",
+              "text": "设备间里的异响也停了。"
+            }
+          ],
+          "badKeywords": [
+            "排风",
+            "强行开门",
+            "砸门"
+          ],
+          "badKeywordMode": "contains",
+          "badResponse": [
+            {
+              "type": "npc",
+              "text": "这个动作不安全，我先撤开。"
+            }
+          ],
+          "onPass": "end",
+          "onBad": "bad-end-rush-in"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "ending-good",
+      "condition": {
+        "requiredPasses": [
+          "confirm-online",
+          "picked-safe-plan",
+          "final-instruction",
+          "took-safety-kit"
+        ]
+      },
+      "intro": [
+        {
+          "type": "npc",
+          "text": "钥匙、手套、断电步骤都对上了，设备间现在已经安全。"
+        }
+      ],
+      "modal": {
+        "title": "结局：标准处置",
+        "body": "你完成了一次完整的标准流程演示。这个结局展示了如何用 requiredPasses 组合出“最佳路线”。",
+        "buttonText": "再玩一次",
+        "redirectUrl": "?d=demo-night-shift"
+      }
+    },
+    {
+      "id": "bad-end-rush-in",
+      "condition": {
+        "anyBad": true
+      },
+      "intro": [
+        {
+          "type": "npc",
+          "text": "我先退回安全线外，今天这次处理只能中止。"
+        }
+      ]
+    },
+    {
+      "id": "ending-timeout",
+      "condition": {
+        "requiredFails": [
+          "final-instruction"
+        ]
+      },
+      "intro": [
+        {
+          "type": "system",
+          "text": "值班时限已到，现场被移交给下一组人员。"
+        }
+      ],
+      "modal": {
+        "title": "结局：交接处理中",
+        "body": "这个结局展示了阶段超时后如何把尚未完成的 single 节点记为 fail，并用于结局判定。",
+        "buttonText": "重新体验",
+        "redirectUrl": "?d=demo-night-shift"
+      }
+    },
+    {
+      "id": "ending-default",
+      "condition": {
+        "default": true
+      },
+      "intro": [
+        {
+          "type": "npc",
+          "text": "虽然流程不算完整，但今晚的风险已经暂时排除了。"
+        }
+      ],
+      "modal": {
+        "title": "结局：临时处置",
+        "body": "你完成了主要判断，但没有走到最稳妥的演示路线。这个兜底结局适合展示 default 条件的用法。",
+        "buttonText": "回到示例",
+        "redirectUrl": "?d=demo-night-shift"
+      }
+    }
+  ]
+}
